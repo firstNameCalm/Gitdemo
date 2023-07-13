@@ -1,0 +1,44 @@
+export default [
+    {
+        path:'/',
+        name:'Layout',
+        redirect:'/index',
+        component:()=>import('../views/LayOut.vue'),
+        children:[
+            {
+                path:'/index',
+                name:'Index',
+                component:()=>import('../views/index/HomeIndex')
+            },
+            {
+                path:'/orders/list',
+                name:'orders_list',
+                meta:{bread:['订单管理','订单列表']},
+                component:()=>import('@/views/orders/OrdersList')
+            },
+            {
+                path:'/waybill/list',
+                name:'waybill_list',
+                meta:{bread:['运单管理','运单列表'],keepAlive:true},
+                component:()=>import('../views/waybill/WaybillList')
+            },
+            {
+                path:'/waybill/list/detail',
+                name:'waybill_list_detail',
+                meta:{bread:['运单管理','运单列表','运单详情']},
+                component:()=>import('../views/waybill/WaybillDetail')
+            }
+              
+        ]
+    },
+    {
+        path:'/login',
+        name:'Login',
+        component:()=>import('../views/LoginVue.vue')
+    },
+    {
+        path:'*',
+        name:'NotFound',
+        component:()=>import('@/views/NotFound.vue')
+    }
+]
